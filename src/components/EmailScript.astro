@@ -1,0 +1,40 @@
+---
+
+// The sample of how the library can be used in Astro.
+
+---
+
+<script>
+    import * as yekaEmailHtmlLib from 'yeka-email-html';
+
+    const yekaEmailHtml = yekaEmailHtmlLib.dev.yekta.yeka.email.html;
+
+    // EmailHtmlWriterScope functions:
+    //   escape(_this_: string): string;
+    //   img(src: string, alt: string, width: number, height: number): void;
+    //   primaryButton(label: string, href: string, inNewTab?: boolean): void;
+    //   secondaryButton(label: string, href: string, inNewTab?: boolean): void;
+    //   raw(html: string): void;
+    type EmailHtmlWriterScope = yekaEmailHtmlLib.dev.yekta.yeka.email.html.EmailHtmlWriterScope;
+
+    const emailHtmlContent = yekaEmailHtml.emailHtml(
+        "title",
+        "receiveReason",
+        "hiddenPreviewPrefix",
+        (x: EmailHtmlWriterScope) => {
+            // footerTopRow
+        },
+        (x: EmailHtmlWriterScope) => {
+            // footerBottomRow
+        },
+        "extraStyle",
+        (x: EmailHtmlWriterScope) => {
+            // body
+        }
+    )
+
+    const doc = (document.getElementById('preview') as HTMLIFrameElement).contentWindow.document;
+    doc.open();
+    doc.write(emailHtmlContent);
+    doc.close();
+</script>
