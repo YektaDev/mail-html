@@ -295,6 +295,7 @@ const App: React.FC = () => {
               setFooterTopRowFunctions([]);
               setFooterBottomRowFunctions([]);
               setBodyFunctions([]);
+              setViewCode(false);
             }}
           />
           <ViewSwitchButton viewCode={viewCode} setViewCode={setViewCode} />
