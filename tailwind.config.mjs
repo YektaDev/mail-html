@@ -7,10 +7,11 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: colors.gray,
+                primary: colors.slate,
             },
             fontFamily: {
                 sans: ['"Overpass Variable"', ...defaultTheme.fontFamily.sans],
+                mono: ['"JetBrains Mono Variable"', ...defaultTheme.fontFamily.mono]
             },
         },
     },
