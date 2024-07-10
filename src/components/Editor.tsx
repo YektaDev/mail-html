@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as yekaEmailHtmlLib from "yeka-email-html";
-import "highlight.js/styles/kimbie-dark.min.css";
+import "highlight.js/styles/atom-one-dark.min.css";
 import hljs from "highlight.js";
 
 const { emailHtml } = yekaEmailHtmlLib.dev.yekta.yeka.email.html;
