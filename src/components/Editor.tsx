@@ -391,6 +391,13 @@ const App: React.FC = () => {
           </a>
         </div>
       </div>
+      <div
+        aria-hidden={true}
+        className="bg-primary-300 py-2 text-center font-light text-primary-800 drop-shadow lg:hidden"
+      >
+        <span className="me-4 font-black text-primary-500">↓</span>Live Output
+        <span className="ms-4 font-black text-primary-500">↓</span>
+      </div>
       <div className="flex flex-1 items-stretch justify-stretch lg:min-h-screen">
         <Output
           title={title}
