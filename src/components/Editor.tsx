@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import * as yekaEmailHtmlLib from "yeka-email-html";
 import "highlight.js/styles/atom-one-dark.min.css";
 import hljs from "highlight.js";
+import { GitHubIcon } from "./GitHubIcon.tsx";
+import { Logo } from "./Logo.tsx";
 
 const { emailHtml } = yekaEmailHtmlLib.dev.yekta.yeka.email.html;
 
@@ -178,8 +180,11 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col lg:flex-row">
-      <div className="bg-primary-50 shadow-primary-300 z-10 min-h-screen p-6 shadow">
-        <h1 className="text-primary-900 mb-4 text-2xl font-bold">Email HTML Generator</h1>
+      <div className="bg-primary-50 shadow-primary-300 z-10 flex flex-col p-6 shadow lg:min-h-screen">
+        <h1 className="text-primary-900 mb-4 text-2xl font-bold">
+          <Logo className="me-4 inline size-14" />
+          Email HTML Generator
+        </h1>
 
         <div className="mb-4">
           <label className="text-primary-700 mb-2 block text-sm font-medium">
@@ -334,6 +339,17 @@ const App: React.FC = () => {
             }}
           />
           <ViewSwitchButton viewCode={viewCode} setViewCode={setViewCode} />
+        </div>
+        <div aria-hidden={true} className="flex-1"></div>
+        <div className="text-primary-800">
+          <a
+            className="hover:text-primary-600"
+            href="https://github.com/YektaDev/mail-html"
+            target="_blank"
+            title="GitHub Repository"
+          >
+            <GitHubIcon className="h-10" aria-hidden={true}></GitHubIcon>
+          </a>
         </div>
       </div>
       <div className="flex flex-1 items-stretch justify-stretch lg:min-h-screen">
