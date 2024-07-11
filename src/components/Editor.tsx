@@ -102,10 +102,10 @@ const App: React.FC = () => {
     hljs.highlightAll();
   }, [viewCode]);
 
-  const [title, setTitle] = useState("Title");
-  const [receiveReason, setReceiveReason] = useState("Receive Reason");
-  const [hiddenPreviewPrefix, setHiddenPreviewPrefix] = useState("Hidden Preview Prefix");
-  const [extraStyle, setExtraStyle] = useState("Extra Style");
+  const [title, setTitle] = useState("");
+  const [receiveReason, setReceiveReason] = useState("");
+  const [hiddenPreviewPrefix, setHiddenPreviewPrefix] = useState("");
+  const [extraStyle, setExtraStyle] = useState("");
 
   const [footerTopRowFunctions, setFooterTopRowFunctions] = useState<any[]>([]);
   const [footerBottomRowFunctions, setFooterBottomRowFunctions] = useState<any[]>([]);
@@ -288,10 +288,10 @@ const App: React.FC = () => {
         <div className="mb-6 flex justify-between">
           <ClearButton
             onConfirm={() => {
-              setTitle("Title");
-              setReceiveReason("Receive Reason");
-              setHiddenPreviewPrefix("Hidden Preview Prefix");
-              setExtraStyle("Extra Style");
+              setTitle("");
+              setReceiveReason("");
+              setHiddenPreviewPrefix("");
+              setExtraStyle("");
               setFooterTopRowFunctions([]);
               setFooterBottomRowFunctions([]);
               setBodyFunctions([]);
