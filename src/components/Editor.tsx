@@ -76,7 +76,7 @@ const buttonIconClasses = "-ms-1 -mt-0.5 me-1 inline size-5";
 const ViewSwitchButton = ({ viewCode, setViewCode }: { viewCode: boolean; setViewCode: any }) => {
   return (
     <button
-      onClick={() => setViewCode(prevViewCode => !prevViewCode)}
+      onClick={() => setViewCode((prevViewCode: boolean) => !prevViewCode)}
       className="rounded bg-primary-500 px-4 py-2 text-white hover:bg-primary-600"
       dangerouslySetInnerHTML={
         viewCode
@@ -167,7 +167,7 @@ const App: React.FC = () => {
   const [footerBottomRowFunctions, setFooterBottomRowFunctions] = useState<any[]>([]);
   const [bodyFunctions, setBodyFunctions] = useState<any[]>([]);
 
-  const moveItem = (fromIndex, toIndex) => {
+  const moveItem = (fromIndex: number, toIndex: number) => {
     const updatedFunctions = [...bodyFunctions];
     const [movedItem] = updatedFunctions.splice(fromIndex, 1);
     updatedFunctions.splice(toIndex, 0, movedItem);
