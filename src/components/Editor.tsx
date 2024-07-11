@@ -7,6 +7,10 @@ import { Logo } from "./Logo.tsx";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import DraggableItem from "./DraggableItem";
+import AceEditor from "react-ace";
+import "ace-builds/src-noconflict/mode-css";
+import "ace-builds/src-noconflict/theme-one_dark";
+import "ace-builds/src-noconflict/ext-language_tools";
 
 const { emailHtml } = yekaEmailHtmlLib.dev.yekta.yeka.email.html;
 
@@ -353,13 +357,22 @@ const App: React.FC = () => {
         <div className="mb-4">
           <label className="mb-2 block text-sm font-medium text-primary-700">
             Extra CSS Style:{" "}
-            <span className={"relative -top-1 ms-2 text-xs opacity-50"}>(Advanced)</span>
-            <input
-              type="text"
+            <span className={"relative -top-1 ms-2 text-xs opacity-50"}>(Advanced - Optional)</span>
+            <AceEditor
+              name="extraStyle"
+              mode="css"
+              theme="one_dark"
+              width="100%"
+              enableBasicAutocompletion={true}
+              minLines={3}
+              maxLines={25}
               value={extraStyle}
-              placeholder={"Optional"}
-              onChange={e => setExtraStyle(e.target.value)}
-              className="mt-1 w-full rounded border border-primary-300 p-2"
+              onChange={e => setExtraStyle(e)}
+              editorProps={{ $blockScrolling: true }}
+              className="mt-1 rounded border border-primary-300"
+              placeholder={
+                "Example:\nhr, .content > table { background: #cfe; border-color: #8ba; }"
+              }
             />
           </label>
         </div>
