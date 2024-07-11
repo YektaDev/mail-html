@@ -181,10 +181,15 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col lg:flex-row">
       <div className="z-10 flex flex-col bg-primary-50 p-6 shadow shadow-primary-300 lg:min-h-screen">
-        <h1 className="mb-4 text-2xl font-bold text-primary-900">
-          <Logo className="me-4 inline size-14" />
-          Email HTML Generator
-        </h1>
+        <header className="mb-4 flex items-center text-primary-900">
+          <Logo className="me-4 inline size-16" />
+          <div className="flex flex-col">
+            <h1 className="text-2xl font-bold">Mail HTML</h1>
+            <span className="text-xs opacity-50">
+              Make a Professional Responsive Email in Seconds!
+            </span>
+          </div>
+        </header>
 
         <div className="mb-4">
           <label className="mb-2 block text-sm font-medium text-primary-700">
