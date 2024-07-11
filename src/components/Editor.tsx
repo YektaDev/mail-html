@@ -174,6 +174,11 @@ const App: React.FC = () => {
     setBodyFunctions(updatedFunctions);
   };
 
+  const deleteItem = (index: number) => {
+    const updatedFunctions = bodyFunctions.filter((_, i) => i !== index);
+    setBodyFunctions(updatedFunctions);
+  };
+
   const applyFunctions = (functions: any[], scope: EmailHtmlWriterScope) => {
     functions.forEach(func => {
       switch (func.type) {
@@ -255,13 +260,6 @@ const App: React.FC = () => {
 
         <div className="mb-6">
           <h2 className="mb-2 text-xl font-semibold text-primary-900">Content</h2>
-          <DndProvider backend={HTML5Backend}>
-            <div>
-              {bodyFunctions.map((func, index) => (
-                <DraggableItem key={index} index={index} item={func} moveItem={moveItem} />
-              ))}
-            </div>
-          </DndProvider>
           <AddButton
             title={"Raw HTML"}
             onClick={() =>
@@ -291,6 +289,19 @@ const App: React.FC = () => {
               })
             }
           />
+          <DndProvider backend={HTML5Backend}>
+            <div className="my-2 space-y-2 rounded border border-dashed border-primary-500 bg-white p-4 text-primary-700">
+              {bodyFunctions.map((func, index) => (
+                <DraggableItem
+                  key={index}
+                  index={index}
+                  item={func}
+                  moveItem={moveItem}
+                  deleteItem={deleteItem}
+                />
+              ))}
+            </div>
+          </DndProvider>
           <label className="mt-6 block text-sm font-medium text-primary-700">
             Receive Reason:
             <input
