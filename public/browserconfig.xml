@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            <square150x150logo src="https://mailhtml.yekta.dev/mstile-150x150.png"/>
+            <square310x310logo src="https://mailhtml.yekta.dev/mstile-310x310.png"/>
+            <wide310x150logo src="https://mailhtml.yekta.dev/mstile-310x150.png"/>
+            <TileColor>#064e3b</TileColor>
+        </tile>
+    </msapplication>
+</browserconfig>
