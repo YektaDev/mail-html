@@ -290,7 +290,7 @@ const App: React.FC = () => {
             }
           />
           <DndProvider backend={HTML5Backend}>
-            <div className="my-2 space-y-2 rounded border border-dashed border-primary-500 bg-white p-4 text-primary-700">
+            <div className="my-2 min-h-60 space-y-2 rounded border border-dashed border-primary-500 bg-white p-4">
               {bodyFunctions.map((func, index) => (
                 <DraggableItem
                   key={index}

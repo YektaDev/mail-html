@@ -21,11 +21,11 @@ const DraggableItem = ({ item, index, moveItem, deleteItem }) => {
   return (
     <div
       ref={node => ref(drop(node))}
-      className="flex rounded border border-primary-300 bg-primary-200 p-2"
+      className="flex rounded border border-primary-300 bg-primary-100 p-2"
     >
-      <button aria-label="Delete Item" onClick={() => deleteItem(index)}>
+      <button title="Delete Item" aria-label="Delete Item" onClick={() => deleteItem(index)}>
         <svg
-          className="-mt-0.5 me-4 inline size-5"
+          className="-mt-0.5 me-4 inline size-4 text-primary-400 hover:text-primary-600"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
         >
