@@ -102,6 +102,25 @@ const ClearButton = ({ onConfirm }: { onConfirm: any }) => {
   );
 };
 
+const AddButton = ({ onClick, title }: { onClick: any; title: string }) => {
+  return (
+    <button
+      onClick={onClick}
+      className="bg-primary-500 hover:bg-primary-600 mr-2 rounded px-3 py-2 text-sm text-white"
+    >
+      <svg
+        aria-hidden={true}
+        className="-ms-1 -mt-0.5 me-1 inline size-5"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"></path>
+      </svg>
+      {title}
+    </button>
+  );
+};
+
 const App: React.FC = () => {
   const [viewCode, setViewCode] = useState(false);
   useEffect(() => {
@@ -165,22 +184,12 @@ const App: React.FC = () => {
         <div className="mb-4">
           <label className="text-primary-700 mb-2 block text-sm font-medium">
             Title:
+            <span className={"relative -top-1 ms-2 text-xs opacity-50"}>(Invisible)</span>
             <input
               type="text"
               value={title}
+              placeholder={"[Suggestion]: The same as the title of the email."}
               onChange={e => setTitle(e.target.value)}
-              className="border-primary-300 mt-1 w-full rounded border p-2"
-            />
-          </label>
-        </div>
-
-        <div className="mb-4">
-          <label className="text-primary-700 mb-2 block text-sm font-medium">
-            Receive Reason:
-            <input
-              type="text"
-              value={receiveReason}
-              onChange={e => setReceiveReason(e.target.value)}
               className="border-primary-300 mt-1 w-full rounded border p-2"
             />
           </label>
@@ -198,32 +207,52 @@ const App: React.FC = () => {
           </label>
         </div>
 
-        <div className="mb-4">
-          <label className="text-primary-700 mb-2 block text-sm font-medium">
-            Extra Style:
-            <input
-              type="text"
-              value={extraStyle}
-              onChange={e => setExtraStyle(e.target.value)}
-              className="border-primary-300 mt-1 w-full rounded border p-2"
-            />
-          </label>
+        <div className="mb-6">
+          <h2 className="mb-2 text-xl font-semibold">Content</h2>
+          <AddButton
+            title={"Raw HTML"}
+            onClick={() =>
+              addFunction(setBodyFunctions, {
+                type: "raw",
+                html: "<div>Top Row Content</div>",
+              })
+            }
+          />
+          <AddButton
+            title={"Primary Button"}
+            onClick={() =>
+              addFunction(setBodyFunctions, {
+                type: "primaryButton",
+                label: "Click Me",
+                href: "https://example.com",
+              })
+            }
+          />
+          <AddButton
+            title="Secondary Button"
+            onClick={() =>
+              addFunction(setBodyFunctions, {
+                type: "secondaryButton",
+                label: "Click Me",
+                href: "https://example.com",
+              })
+            }
+          />
         </div>
 
         <div className="mb-6">
-          <h2 className="mb-2 text-xl font-semibold">Configure Footer Top Row</h2>
-          <button
+          <h2 className="mb-2 text-xl font-semibold">Footer - Top Row</h2>
+          <AddButton
+            title={"Raw HTML"}
             onClick={() =>
               addFunction(setFooterTopRowFunctions, {
                 type: "raw",
                 html: "<div>Top Row Content</div>",
               })
             }
-            className="bg-primary-500 hover:bg-primary-600 mr-2 rounded px-4 py-2 text-white"
-          >
-            Add Raw HTML
-          </button>
-          <button
+          />
+          <AddButton
+            title={"Primary Button"}
             onClick={() =>
               addFunction(setFooterTopRowFunctions, {
                 type: "primaryButton",
@@ -231,15 +260,11 @@ const App: React.FC = () => {
                 href: "https://example.com",
               })
             }
-            className="bg-primary-500 hover:bg-primary-600 rounded px-4 py-2 text-white"
-          >
-            Add Primary Button
-          </button>
-          {/* Add more buttons for other types as needed */}
+          />
         </div>
 
         <div className="mb-6">
-          <h2 className="mb-2 text-xl font-semibold">Configure Footer Bottom Row</h2>
+          <h2 className="mb-2 text-xl font-semibold">Footer - Bottom Row</h2>
           <button
             onClick={() =>
               addFunction(setFooterBottomRowFunctions, {
@@ -266,32 +291,36 @@ const App: React.FC = () => {
           {/* Add more buttons for other types as needed */}
         </div>
 
-        <div className="mb-6">
-          <h2 className="mb-2 text-xl font-semibold">Configure Body Content</h2>
-          <button
-            onClick={() =>
-              addFunction(setBodyFunctions, { type: "raw", html: "<div>Some Sample Content</div>" })
-            }
-            className="bg-primary-500 hover:bg-primary-600 mr-2 rounded px-4 py-2 text-white"
-          >
-            Add Raw HTML
-          </button>
-          <button
-            onClick={() =>
-              addFunction(setBodyFunctions, {
-                type: "primaryButton",
-                label: "Sample Label",
-                href: "https://sample.url",
-              })
-            }
-            className="bg-primary-500 hover:bg-primary-600 rounded px-4 py-2 text-white"
-          >
-            Add Primary Button
-          </button>
-          {/* Add more buttons for other types as needed */}
+        <div className="mb-4">
+          <label className="text-primary-700 mb-2 block text-sm font-medium">
+            Receive Reason:
+            <input
+              type="text"
+              value={receiveReason}
+              placeholder={
+                "E.g., You received this email because you requested to sign up for our service. If you did not make this request, you can safely ignore this email. No account will be created without verification."
+              }
+              onChange={e => setReceiveReason(e.target.value)}
+              className="border-primary-300 mt-1 w-full rounded border p-2"
+            />
+          </label>
         </div>
 
-        <div className="mb-6 flex justify-between">
+        <div className="mb-4">
+          <label className="text-primary-700 mb-2 block text-sm font-medium">
+            Extra CSS Style:{" "}
+            <span className={"relative -top-1 ms-2 text-xs opacity-50"}>(Advanced)</span>
+            <input
+              type="text"
+              value={extraStyle}
+              placeholder={"Optional"}
+              onChange={e => setExtraStyle(e.target.value)}
+              className="border-primary-300 mt-1 w-full rounded border p-2"
+            />
+          </label>
+        </div>
+
+        <div className="mb-6 mt-10 flex justify-between">
           <ClearButton
             onConfirm={() => {
               setTitle("");
@@ -317,6 +346,7 @@ const App: React.FC = () => {
           footerBottomRow={footerBottomRow}
           body={body}
           viewCode={viewCode}
+          setViewCode={setViewCode}
         />
       </div>
     </div>
