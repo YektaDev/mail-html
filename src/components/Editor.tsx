@@ -54,8 +54,8 @@ const Output: React.FC<EmailHtmlGeneratorProps> = ({
 
   if (viewCode)
     return (
-      <pre className="bg-primary-200 block size-full min-h-screen p-4 text-sm">
-        <code className="border-primary-800 size-full whitespace-pre text-wrap rounded-xl border">
+      <pre className="block size-full min-h-screen bg-primary-200 p-4 text-sm">
+        <code className="size-full whitespace-pre text-wrap rounded-xl border border-primary-800">
           {emailHtmlContent}
         </code>
       </pre>
@@ -68,7 +68,7 @@ const ViewSwitchButton = ({ viewCode, setViewCode }: { viewCode: boolean; setVie
   return (
     <button
       onClick={() => setViewCode(prevViewCode => !prevViewCode)}
-      className="bg-primary-500 hover:bg-primary-600 rounded px-4 py-2 text-white"
+      className="rounded bg-primary-500 px-4 py-2 text-white hover:bg-primary-600"
     >
       {viewCode ? "View Preview" : "View Code"}
     </button>
@@ -97,7 +97,7 @@ const ClearButton = ({ onConfirm }: { onConfirm: any }) => {
           setConfirm(true);
         }
       }}
-      className="hover:outline-primary-700 bg-primary-100 hover:bg-primary-200 hover:text-primary-700 outline-primary-500 text-primary-500 rounded px-4 py-2 outline"
+      className="rounded bg-primary-100 px-4 py-2 text-primary-500 outline outline-primary-500 hover:bg-primary-200 hover:text-primary-700 hover:outline-primary-700"
     >
       {confirm ? "Are you sure?" : "Reset"}
     </button>
@@ -108,7 +108,7 @@ const AddButton = ({ onClick, title }: { onClick: any; title: string }) => {
   return (
     <button
       onClick={onClick}
-      className="bg-primary-500 hover:bg-primary-600 mr-2 rounded px-3 py-2 text-sm text-white"
+      className="mr-2 rounded bg-primary-500 px-3 py-2 text-sm text-white hover:bg-primary-600"
     >
       <svg
         aria-hidden={true}
@@ -180,14 +180,14 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col lg:flex-row">
-      <div className="bg-primary-50 shadow-primary-300 z-10 flex flex-col p-6 shadow lg:min-h-screen">
-        <h1 className="text-primary-900 mb-4 text-2xl font-bold">
+      <div className="z-10 flex flex-col bg-primary-50 p-6 shadow shadow-primary-300 lg:min-h-screen">
+        <h1 className="mb-4 text-2xl font-bold text-primary-900">
           <Logo className="me-4 inline size-14" />
           Email HTML Generator
         </h1>
 
         <div className="mb-4">
-          <label className="text-primary-700 mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-primary-700">
             Title:
             <span className={"relative -top-1 ms-2 text-xs opacity-50"}>(Invisible)</span>
             <input
@@ -195,19 +195,19 @@ const App: React.FC = () => {
               value={title}
               placeholder={"[Suggestion]: The same as the title of the email."}
               onChange={e => setTitle(e.target.value)}
-              className="border-primary-300 mt-1 w-full rounded border p-2"
+              className="mt-1 w-full rounded border border-primary-300 p-2"
             />
           </label>
         </div>
 
         <div className="mb-4">
-          <label className="text-primary-700 mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-primary-700">
             Hidden Preview Prefix:
             <input
               type="text"
               value={hiddenPreviewPrefix}
               onChange={e => setHiddenPreviewPrefix(e.target.value)}
-              className="border-primary-300 mt-1 w-full rounded border p-2"
+              className="mt-1 w-full rounded border border-primary-300 p-2"
             />
           </label>
         </div>
@@ -277,7 +277,7 @@ const App: React.FC = () => {
                 html: "<div>Bottom Row Content</div>",
               })
             }
-            className="bg-primary-500 hover:bg-primary-600 mr-2 rounded px-4 py-2 text-white"
+            className="mr-2 rounded bg-primary-500 px-4 py-2 text-white hover:bg-primary-600"
           >
             Add Raw HTML
           </button>
@@ -289,7 +289,7 @@ const App: React.FC = () => {
                 href: "https://example.com",
               })
             }
-            className="bg-primary-500 hover:bg-primary-600 rounded px-4 py-2 text-white"
+            className="rounded bg-primary-500 px-4 py-2 text-white hover:bg-primary-600"
           >
             Add Primary Button
           </button>
@@ -297,7 +297,7 @@ const App: React.FC = () => {
         </div>
 
         <div className="mb-4">
-          <label className="text-primary-700 mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-primary-700">
             Receive Reason:
             <input
               type="text"
@@ -306,13 +306,13 @@ const App: React.FC = () => {
                 "E.g., You received this email because you requested to sign up for our service. If you did not make this request, you can safely ignore this email. No account will be created without verification."
               }
               onChange={e => setReceiveReason(e.target.value)}
-              className="border-primary-300 mt-1 w-full rounded border p-2"
+              className="mt-1 w-full rounded border border-primary-300 p-2"
             />
           </label>
         </div>
 
         <div className="mb-4">
-          <label className="text-primary-700 mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-primary-700">
             Extra CSS Style:{" "}
             <span className={"relative -top-1 ms-2 text-xs opacity-50"}>(Advanced)</span>
             <input
@@ -320,7 +320,7 @@ const App: React.FC = () => {
               value={extraStyle}
               placeholder={"Optional"}
               onChange={e => setExtraStyle(e.target.value)}
-              className="border-primary-300 mt-1 w-full rounded border p-2"
+              className="mt-1 w-full rounded border border-primary-300 p-2"
             />
           </label>
         </div>
@@ -348,7 +348,7 @@ const App: React.FC = () => {
             target="_blank"
             title="GitHub Repository"
           >
-            <GitHubIcon className="h-10" aria-hidden={true}></GitHubIcon>
+            <GitHubIcon className="inline h-10" aria-hidden={true}></GitHubIcon>
           </a>
         </div>
       </div>
