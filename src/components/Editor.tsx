@@ -22,6 +22,7 @@ interface EmailHtmlGeneratorProps {
   footerBottomRow: (x: EmailHtmlWriterScope) => void;
   body: (x: EmailHtmlWriterScope) => void;
   viewCode: boolean;
+  setViewCode: (viewCode: boolean) => void;
 }
 
 const Output: React.FC<EmailHtmlGeneratorProps> = ({
@@ -33,6 +34,7 @@ const Output: React.FC<EmailHtmlGeneratorProps> = ({
   footerBottomRow,
   body,
   viewCode,
+  setViewCode,
 }) => {
   const emailHtmlContent = emailHtml(
     title,
@@ -43,6 +45,10 @@ const Output: React.FC<EmailHtmlGeneratorProps> = ({
     extraStyle,
     body,
   );
+
+  useEffect(() => {
+    setViewCode(false);
+  }, [emailHtmlContent]);
 
   if (viewCode)
     return (
