@@ -7,7 +7,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: colors.slate,
+                primary: colors.emerald,
             },
             fontFamily: {
                 sans: ['"Overpass Variable"', ...defaultTheme.fontFamily.sans],
