@@ -4,6 +4,9 @@ import "highlight.js/styles/atom-one-dark.min.css";
 import hljs from "highlight.js";
 import { GitHubIcon } from "./GitHubIcon.tsx";
 import { Logo } from "./Logo.tsx";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import DraggableItem from "./DraggableItem";
 
 const { emailHtml } = yekaEmailHtmlLib.dev.yekta.yeka.email.html;
 
@@ -160,6 +163,13 @@ const App: React.FC = () => {
   const [footerBottomRowFunctions, setFooterBottomRowFunctions] = useState<any[]>([]);
   const [bodyFunctions, setBodyFunctions] = useState<any[]>([]);
 
+  const moveItem = (fromIndex, toIndex) => {
+    const updatedFunctions = [...bodyFunctions];
+    const [movedItem] = updatedFunctions.splice(fromIndex, 1);
+    updatedFunctions.splice(toIndex, 0, movedItem);
+    setBodyFunctions(updatedFunctions);
+  };
+
   const applyFunctions = (functions: any[], scope: EmailHtmlWriterScope) => {
     functions.forEach(func => {
       switch (func.type) {
@@ -241,6 +251,13 @@ const App: React.FC = () => {
 
         <div className="mb-6">
           <h2 className="mb-2 text-xl font-semibold">Content</h2>
+          <DndProvider backend={HTML5Backend}>
+            <div>
+              {bodyFunctions.map((func, index) => (
+                <DraggableItem key={index} index={index} item={func} moveItem={moveItem} />
+              ))}
+            </div>
+          </DndProvider>
           <AddButton
             title={"Raw HTML"}
             onClick={() =>
