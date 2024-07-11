@@ -57,7 +57,7 @@ const Output: React.FC<EmailHtmlGeneratorProps> = ({
 
   if (viewCode)
     return (
-      <pre className="block size-full min-h-screen bg-primary-200 p-4 text-sm">
+      <pre className="block size-full max-h-screen min-h-screen bg-primary-200 p-4 text-sm">
         <code className="size-full whitespace-pre text-wrap rounded-xl border border-primary-800">
           {emailHtmlContent}
         </code>
@@ -212,7 +212,7 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col lg:flex-row">
-      <div className="z-10 flex flex-col bg-primary-50 p-6 shadow shadow-primary-300 lg:min-h-screen">
+      <div className="z-10 flex max-h-screen flex-col overflow-y-auto bg-primary-50 p-6 shadow shadow-primary-300 lg:min-h-screen">
         <header className="mb-4 flex items-center text-primary-900">
           <Logo className="me-4 inline size-16" />
           <div className="flex flex-col font-bold">
