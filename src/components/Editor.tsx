@@ -64,14 +64,27 @@ const Output: React.FC<EmailHtmlGeneratorProps> = ({
   return <iframe id="preview" className="size-full min-h-screen" srcDoc={emailHtmlContent} />;
 };
 
+const buttonIconClasses = "-ms-1 -mt-0.5 me-1 inline size-5";
+
 const ViewSwitchButton = ({ viewCode, setViewCode }: { viewCode: boolean; setViewCode: any }) => {
   return (
     <button
       onClick={() => setViewCode(prevViewCode => !prevViewCode)}
       className="rounded bg-primary-500 px-4 py-2 text-white hover:bg-primary-600"
-    >
-      {viewCode ? "View Preview" : "View Code"}
-    </button>
+      dangerouslySetInnerHTML={
+        viewCode
+          ? {
+              __html:
+                `<svg aria-hidden="true" class="${buttonIconClasses}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M2 2h12l1 1v10l-1 1H2l-1-1V3zm0 11h12V3H2zm11-9H3v3h10zm-1 2H4V5h8zm-3 6h4V8H9zm1-3h2v2h-2zM7 8H3v1h4zm-4 3h4v1H3z" clip-rule="evenodd"/></svg>` +
+                "View Preview",
+            }
+          : {
+              __html:
+                `<svg aria-hidden="true" class="${buttonIconClasses}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m12.89 3l1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12L16 18.41v-2.83zM1.58 12L8 5.58v2.83L4.41 12L8 15.58v2.83z"/></svg>` +
+                "View Code",
+            }
+      }
+    ></button>
   );
 };
 
@@ -98,9 +111,18 @@ const ClearButton = ({ onConfirm }: { onConfirm: any }) => {
         }
       }}
       className="rounded bg-primary-100 px-4 py-2 text-primary-500 outline outline-primary-500 hover:bg-primary-200 hover:text-primary-700 hover:outline-primary-700"
-    >
-      {confirm ? "Are you sure?" : "Reset"}
-    </button>
+      dangerouslySetInnerHTML={
+        confirm
+          ? {
+              __html: "Are you sure?",
+            }
+          : {
+              __html:
+                `<svg aria-hidden="true" class="${buttonIconClasses}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2v2a8 8 0 1 1-5.135 1.865L9 8V2H3l2.446 2.447A9.98 9.98 0 0 0 2 12"/></svg>` +
+                "Reset",
+            }
+      }
+    />
   );
 };
 
@@ -112,7 +134,7 @@ const AddButton = ({ onClick, title }: { onClick: any; title: string }) => {
     >
       <svg
         aria-hidden={true}
-        className="-ms-1 -mt-0.5 me-1 inline size-5"
+        className={buttonIconClasses}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -183,8 +205,8 @@ const App: React.FC = () => {
       <div className="z-10 flex flex-col bg-primary-50 p-6 shadow shadow-primary-300 lg:min-h-screen">
         <header className="mb-4 flex items-center text-primary-900">
           <Logo className="me-4 inline size-16" />
-          <div className="flex flex-col">
-            <h1 className="text-2xl font-bold">Mail HTML</h1>
+          <div className="flex flex-col font-bold">
+            <h1 className="text-2xl">Mail HTML</h1>
             <span className="text-xs opacity-50">
               Make a Professional Responsive Email in Seconds!
             </span>
@@ -275,18 +297,17 @@ const App: React.FC = () => {
 
         <div className="mb-6">
           <h2 className="mb-2 text-xl font-semibold">Footer - Bottom Row</h2>
-          <button
+          <AddButton
+            title={"Raw HTML"}
             onClick={() =>
               addFunction(setFooterBottomRowFunctions, {
                 type: "raw",
-                html: "<div>Bottom Row Content</div>",
+                html: "<div>Top Row Content</div>",
               })
             }
-            className="mr-2 rounded bg-primary-500 px-4 py-2 text-white hover:bg-primary-600"
-          >
-            Add Raw HTML
-          </button>
-          <button
+          />
+          <AddButton
+            title={"Primary Button"}
             onClick={() =>
               addFunction(setFooterBottomRowFunctions, {
                 type: "primaryButton",
@@ -294,11 +315,7 @@ const App: React.FC = () => {
                 href: "https://example.com",
               })
             }
-            className="rounded bg-primary-500 px-4 py-2 text-white hover:bg-primary-600"
-          >
-            Add Primary Button
-          </button>
-          {/* Add more buttons for other types as needed */}
+          />
         </div>
 
         <div className="mb-4">
