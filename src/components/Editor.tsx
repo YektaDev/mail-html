@@ -254,7 +254,7 @@ const App: React.FC = () => {
         </div>
 
         <div className="mb-6">
-          <h2 className="mb-2 text-xl font-semibold">Content</h2>
+          <h2 className="mb-2 text-xl font-semibold text-primary-900">Content</h2>
           <DndProvider backend={HTML5Backend}>
             <div>
               {bodyFunctions.map((func, index) => (
@@ -291,56 +291,7 @@ const App: React.FC = () => {
               })
             }
           />
-        </div>
-
-        <div className="mb-6">
-          <h2 className="mb-2 text-xl font-semibold">Footer - Top Row</h2>
-          <AddButton
-            title={"Raw HTML"}
-            onClick={() =>
-              addFunction(setFooterTopRowFunctions, {
-                type: "raw",
-                html: "<div>Top Row Content</div>",
-              })
-            }
-          />
-          <AddButton
-            title={"Primary Button"}
-            onClick={() =>
-              addFunction(setFooterTopRowFunctions, {
-                type: "primaryButton",
-                label: "Click Me",
-                href: "https://example.com",
-              })
-            }
-          />
-        </div>
-
-        <div className="mb-6">
-          <h2 className="mb-2 text-xl font-semibold">Footer - Bottom Row</h2>
-          <AddButton
-            title={"Raw HTML"}
-            onClick={() =>
-              addFunction(setFooterBottomRowFunctions, {
-                type: "raw",
-                html: "<div>Top Row Content</div>",
-              })
-            }
-          />
-          <AddButton
-            title={"Primary Button"}
-            onClick={() =>
-              addFunction(setFooterBottomRowFunctions, {
-                type: "primaryButton",
-                label: "Click Me",
-                href: "https://example.com",
-              })
-            }
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="mb-2 block text-sm font-medium text-primary-700">
+          <label className="mt-6 block text-sm font-medium text-primary-700">
             Receive Reason:
             <input
               type="text"
@@ -352,6 +303,54 @@ const App: React.FC = () => {
               className="mt-1 w-full rounded border border-primary-300 p-2"
             />
           </label>
+        </div>
+
+        <div className="mb-6">
+          <h2 className="mb-2 text-xl font-semibold text-primary-900">Footer</h2>
+          <div className="mb-4">
+            <h3 className="mb-2 font-semibold text-primary-800">Top Row</h3>
+            <AddButton
+              title={"Raw HTML"}
+              onClick={() =>
+                addFunction(setFooterTopRowFunctions, {
+                  type: "raw",
+                  html: "<div>Top Row Content</div>",
+                })
+              }
+            />
+            <AddButton
+              title={"Primary Button"}
+              onClick={() =>
+                addFunction(setFooterTopRowFunctions, {
+                  type: "primaryButton",
+                  label: "Click Me",
+                  href: "https://example.com",
+                })
+              }
+            />
+          </div>
+          <div className="mb-4">
+            <h3 className="mb-2 font-semibold text-primary-800">Bottom Row</h3>
+            <AddButton
+              title={"Raw HTML"}
+              onClick={() =>
+                addFunction(setFooterBottomRowFunctions, {
+                  type: "raw",
+                  html: "<div>Top Row Content</div>",
+                })
+              }
+            />
+            <AddButton
+              title={"Primary Button"}
+              onClick={() =>
+                addFunction(setFooterBottomRowFunctions, {
+                  type: "primaryButton",
+                  label: "Click Me",
+                  href: "https://example.com",
+                })
+              }
+            />
+          </div>
         </div>
 
         <div className="mb-4">
