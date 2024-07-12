@@ -31,6 +31,7 @@ const DraggableItem = ({ item, index, moveItem, deleteItem, updateItem }) => {
     <div
       ref={node => ref(drop(node))}
       className="flex rounded border border-primary-300 bg-primary-100 p-2"
+      style={{ transform: "translate3d(0, 0, 0)" }}
     >
       <button title="Delete Item" aria-label="Delete Item" onClick={() => deleteItem(index)}>
         <svg
