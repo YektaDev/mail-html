@@ -31,6 +31,7 @@
     "yeka-email-html": "file:local_modules/yeka-email-html-0.0.1.tgz"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-tailwindcss": "^0.6.5"
