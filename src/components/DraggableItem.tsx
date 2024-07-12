@@ -56,7 +56,16 @@ const DraggableItem = ({ item, index, moveItem, deleteItem, updateItem }) => {
           <SecondaryButton label={item.label} onChange={value => handleChange("label", value)} />
         )}
         {item.type === "img" && (
-          <Img src={item.src} onChange={value => handleChange("src", value)} />
+          <Img
+            src={item.src}
+            alt={item.alt}
+            width={item.width}
+            height={item.height}
+            onSrcChange={(value: string) => handleChange("src", value)}
+            onAltChange={(value: string) => handleChange("alt", value)}
+            onWidthChange={(value: string) => handleChange("width", value)}
+            onHeightChange={(value: string) => handleChange("height", value)}
+          />
         )}
       </div>
     </div>
