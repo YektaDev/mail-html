@@ -11,6 +11,7 @@ const Img = ({
   onHeightChange,
 }) => {
   const fieldClass = "mt-1 w-full rounded border border-primary-300 py-1 px-1.5";
+  const sizeFieldClass = fieldClass + " w-[3.1rem]";
   return (
     <div className="flex w-full space-x-2 text-xs">
       <input
@@ -31,19 +32,18 @@ const Img = ({
           value={width}
           onChange={e => onWidthChange(e.target.value)}
           placeholder="Width"
-          className={fieldClass + " w-[3.1rem]"}
+          className={sizeFieldClass}
         />
         <span
           className="-mb-1.5 select-none items-center text-center font-light text-primary-700"
           aria-hidden={true}
-        >
-          ×
-        </span>
+          dangerouslySetInnerHTML={{ __html: "&times;" }}
+        />
         <input
           value={height}
           onChange={e => onHeightChange(e.target.value)}
           placeholder="Height"
-          className={fieldClass + " w-[3.1rem]"}
+          className={sizeFieldClass}
         />
       </div>
     </div>
