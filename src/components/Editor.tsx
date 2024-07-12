@@ -267,7 +267,7 @@ const App: React.FC = () => {
         <div className="mb-6">
           <h2 className="mb-2 text-xl font-semibold text-primary-900">Content</h2>
           <AddButton
-            title={"Raw HTML / Text"}
+            title={"HTML / Text"}
             onClick={() =>
               addFunction(setBodyFunctions, {
                 type: "raw",
