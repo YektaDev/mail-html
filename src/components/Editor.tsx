@@ -179,6 +179,12 @@ const App: React.FC = () => {
     setBodyFunctions(updatedFunctions);
   };
 
+  const updateItem = (index: number, updatedItem: any) => {
+    const updatedFunctions = [...bodyFunctions];
+    updatedFunctions[index] = updatedItem;
+    setBodyFunctions(updatedFunctions);
+  };
+
   const applyFunctions = (functions: any[], scope: EmailHtmlWriterScope) => {
     functions.forEach(func => {
       switch (func.type) {
@@ -310,6 +316,7 @@ const App: React.FC = () => {
                   item={func}
                   moveItem={moveItem}
                   deleteItem={deleteItem}
+                  updateItem={updateItem}
                 />
               ))}
             </div>

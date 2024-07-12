@@ -1,8 +1,13 @@
+import React from "react";
 import { useDrag, useDrop } from "react-dnd";
+import RawHtml from "./mail/RawHtml";
+import PrimaryButton from "./mail/PrimaryButton";
+import SecondaryButton from "./mail/SecondaryButton";
+import Img from "./mail/Img";
 
 const ItemType = "ITEM";
 
-const DraggableItem = ({ item, index, moveItem, deleteItem }) => {
+const DraggableItem = ({ item, index, moveItem, deleteItem, updateItem }) => {
   const [, ref] = useDrag({
     type: ItemType,
     item: { index },
@@ -17,6 +22,10 @@ const DraggableItem = ({ item, index, moveItem, deleteItem }) => {
       }
     },
   });
+
+  const handleChange = (key, value) => {
+    updateItem(index, { ...item, [key]: value });
+  };
 
   return (
     <div
@@ -36,10 +45,17 @@ const DraggableItem = ({ item, index, moveItem, deleteItem }) => {
         </svg>
       </button>
       <div className="flex flex-1 items-center">
-        {item.type === "raw" && <div dangerouslySetInnerHTML={{ __html: item.html }} />}
-        {item.type === "primaryButton" && <button className="btn btn-primary">{item.label}</button>}
+        {item.type === "raw" && (
+          <RawHtml html={item.html} onChange={value => handleChange("html", value)} />
+        )}
+        {item.type === "primaryButton" && (
+          <PrimaryButton label={item.label} onChange={value => handleChange("label", value)} />
+        )}
         {item.type === "secondaryButton" && (
-          <button className="btn btn-secondary">{item.label}</button>
+          <SecondaryButton label={item.label} onChange={value => handleChange("label", value)} />
+        )}
+        {item.type === "img" && (
+          <Img src={item.src} onChange={value => handleChange("src", value)} />
         )}
       </div>
     </div>
