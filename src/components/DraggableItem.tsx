@@ -1,8 +1,7 @@
 import React from "react";
 import { useDrag, useDrop } from "react-dnd";
 import RawHtml from "./mail/RawHtml";
-import PrimaryButton from "./mail/PrimaryButton";
-import SecondaryButton from "./mail/SecondaryButton";
+import Button from "./mail/Button.tsx";
 import Img from "./mail/Img";
 
 const ItemType = "ITEM";
@@ -23,7 +22,7 @@ const DraggableItem = ({ item, index, moveItem, deleteItem, updateItem }) => {
     },
   });
 
-  const handleChange = (key, value) => {
+  const handleChange = (key: string, value: string) => {
     updateItem(index, { ...item, [key]: value });
   };
 
@@ -49,11 +48,15 @@ const DraggableItem = ({ item, index, moveItem, deleteItem, updateItem }) => {
         {item.type === "raw" && (
           <RawHtml html={item.html} onChange={value => handleChange("html", value)} />
         )}
-        {item.type === "primaryButton" && (
-          <PrimaryButton label={item.label} onChange={value => handleChange("label", value)} />
-        )}
-        {item.type === "secondaryButton" && (
-          <SecondaryButton label={item.label} onChange={value => handleChange("label", value)} />
+        {(item.type === "primaryButton" || item.type === "secondaryButton") && (
+          <Button
+            label={item.label}
+            href={item.href}
+            inNewTab={item.inNewTab}
+            onLabelChange={(value: string) => handleChange("label", value)}
+            onHrefChange={(value: string) => handleChange("href", value)}
+            onInNewTabChange={(value: string) => handleChange("inNewTab", value)}
+          />
         )}
         {item.type === "img" && (
           <Img
