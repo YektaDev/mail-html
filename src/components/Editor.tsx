@@ -267,11 +267,11 @@ const App: React.FC = () => {
         <div className="mb-6">
           <h2 className="mb-2 text-xl font-semibold text-primary-900">Content</h2>
           <AddButton
-            title={"Raw HTML"}
+            title={"Raw HTML / Text"}
             onClick={() =>
               addFunction(setBodyFunctions, {
                 type: "raw",
-                html: "<div>Top Row Content</div>",
+                html: "",
               })
             }
           />
@@ -282,8 +282,8 @@ const App: React.FC = () => {
                 type: "img",
                 src: "",
                 alt: "",
-                width: "100px",
-                height: "100px",
+                width: "",
+                height: "",
               })
             }
           />
@@ -292,8 +292,8 @@ const App: React.FC = () => {
             onClick={() =>
               addFunction(setBodyFunctions, {
                 type: "primaryButton",
-                label: "Click Me",
-                href: "https://example.com",
+                label: "",
+                href: "",
               })
             }
           />
@@ -302,8 +302,8 @@ const App: React.FC = () => {
             onClick={() =>
               addFunction(setBodyFunctions, {
                 type: "secondaryButton",
-                label: "Click Me",
-                href: "https://example.com",
+                label: "",
+                href: "",
               })
             }
           />
