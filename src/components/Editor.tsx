@@ -270,6 +270,18 @@ const App: React.FC = () => {
             }
           />
           <AddButton
+            title={"Image"}
+            onClick={() =>
+              addFunction(setBodyFunctions, {
+                type: "img",
+                src: "",
+                alt: "",
+                width: "100px",
+                height: "100px",
+              })
+            }
+          />
+          <AddButton
             title={"Primary Button"}
             onClick={() =>
               addFunction(setBodyFunctions, {
