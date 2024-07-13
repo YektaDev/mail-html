@@ -12,6 +12,7 @@ import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/ext-language_tools";
 import { buttonIconClasses, buttonStyle, fieldStyle, outlineButtonStyle } from "./styles.ts";
 import ButtonGroup from "./ButtonGroup.tsx";
+import Item from "./Item.tsx";
 
 const { emailHtml } = yekaEmailHtmlLib.dev.yekta.yeka.email.html;
 
@@ -143,14 +144,14 @@ const AddButton = ({ onClick, html }: { onClick: any; html: string }) => {
 };
 
 const activeFooterButton: (rowFunctions: any[]) => string = (rowFunctions: any[]) => {
-  return rowFunctions.length === 0
+  return rowFunctions == undefined || rowFunctions.length === 0
     ? "Nothing"
     : rowFunctions[0].type === "raw"
       ? "Text / HTML"
       : rowFunctions[0].type === "img"
         ? "Image"
         : (() => {
-            console.error("Unknown top row item type");
+            console.error("Unknown row item type: ", rowFunctions[0].type);
             return "Nothing";
           })();
 };
@@ -405,6 +406,16 @@ const App: React.FC = () => {
               }}
             />
           </div>
+          <div className="mb-6">
+            {
+              <Item
+                item={footerTopRowFunctions[0]}
+                handleChange={(key: string, value: string) => {
+                  setFooterTopRowFunctions([{ ...footerTopRowFunctions[0], [key]: value }]);
+                }}
+              />
+            }
+          </div>
           <div className="mb-4 flex items-center">
             <h3 className="me-4 font-semibold text-primary-800">Bottom Row</h3>
             <ButtonGroup
@@ -414,6 +425,16 @@ const App: React.FC = () => {
                 handleFooterButton(button, setFooterBottomRowFunctions);
               }}
             />
+          </div>
+          <div className="mb-6">
+            {
+              <Item
+                item={footerBottomRowFunctions[0]}
+                handleChange={(key: string, value: string) => {
+                  setFooterBottomRowFunctions([{ ...footerBottomRowFunctions[0], [key]: value }]);
+                }}
+              />
+            }
           </div>
         </div>
 
