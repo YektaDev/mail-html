@@ -3,7 +3,7 @@ import { fieldStyle } from "../styles.ts";
 
 const Button = ({ label, href, inNewTab, onLabelChange, onHrefChange, onInNewTabChange }) => {
   return (
-    <div className="flex w-full items-center space-x-2 text-xs">
+    <div className="flex w-full items-center gap-2 text-xs">
       <input
         className={"flex-2 px-2 py-1 " + fieldStyle}
         value={label}
@@ -16,7 +16,7 @@ const Button = ({ label, href, inNewTab, onLabelChange, onHrefChange, onInNewTab
         onChange={e => onHrefChange(e.target.value)}
         placeholder="URL"
       />
-      <label className="me-1 flex items-center space-x-1.5">
+      <label className="me-1 flex items-center gap-1.5">
         <input
           type="checkbox"
           className={
@@ -25,7 +25,7 @@ const Button = ({ label, href, inNewTab, onLabelChange, onHrefChange, onInNewTab
           value={inNewTab}
           onChange={e => onInNewTabChange(e.target.checked)}
         />
-        <span className="text-primary-900">New Tab</span>
+        <span className="text-nowrap text-primary-900">New Tab</span>
       </label>
     </div>
   );

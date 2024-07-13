@@ -1,6 +1,9 @@
 import React from "react";
 import { fieldStyle } from "../styles.ts";
 
+const commonFieldClass = "py-1 px-1.5 " + fieldStyle;
+const propFieldClass = commonFieldClass + " w-0 flex-1";
+const sizeFieldClass = commonFieldClass + " w-[3.1rem]";
 const Img = ({
   src,
   alt,
@@ -11,24 +14,22 @@ const Img = ({
   onWidthChange,
   onHeightChange,
 }) => {
-  const fieldClass = "mt-1 grow py-1 px-1.5 " + fieldStyle;
-  const sizeFieldClass = fieldClass + " w-[3.1rem]";
   return (
-    <div className="flex w-full space-x-2">
+    <div className="flex w-full gap-2">
       <input
         value={src}
         onChange={e => onSrcChange(e.target.value)}
         placeholder="Image URL"
-        className={fieldClass}
+        className={propFieldClass}
       />
       <input
         value={alt}
         onChange={e => onAltChange(e.target.value)}
         placeholder="Alt Text"
-        className={fieldClass}
+        className={propFieldClass}
       />
 
-      <div className="flex flex-1 items-center">
+      <div className="flex items-center">
         <input
           value={width}
           onChange={e => onWidthChange(e.target.value)}
