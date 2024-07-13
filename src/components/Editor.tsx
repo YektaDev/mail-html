@@ -396,7 +396,7 @@ const App: React.FC = () => {
 
         <div className="mb-6">
           <h2 className="mb-2 text-xl font-semibold text-primary-900">Footer</h2>
-          <div className="mb-4 flex items-center">
+          <div className="xs:flex-row mb-4 flex flex-col items-center">
             <h3 className="me-4 font-semibold text-primary-800">Top Row</h3>
             <ButtonGroup
               buttons={["Nothing", "Text / HTML", "Image"]}
@@ -416,7 +416,7 @@ const App: React.FC = () => {
               />
             }
           </div>
-          <div className="mb-4 flex items-center">
+          <div className="xs:flex-row mb-4 flex flex-col items-center">
             <h3 className="me-4 font-semibold text-primary-800">Bottom Row</h3>
             <ButtonGroup
               buttons={["Nothing", "Text / HTML", "Image"]}
