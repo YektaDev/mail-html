@@ -71,7 +71,7 @@ const Output: React.FC<EmailHtmlGeneratorProps> = ({
   return <iframe id="preview" className="size-full min-h-screen" srcDoc={emailHtmlContent} />;
 };
 
-const buttonIconClasses = "-ms-1 -mt-0.5 me-1 inline size-5";
+const buttonIconClasses = "-ms-1 -mt-0.5 me-2 inline size-6";
 
 const ViewSwitchButton = ({ viewCode, setViewCode }: { viewCode: boolean; setViewCode: any }) => {
   return (
@@ -133,22 +133,13 @@ const ClearButton = ({ onConfirm }: { onConfirm: any }) => {
   );
 };
 
-const AddButton = ({ onClick, title }: { onClick: any; title: string }) => {
+const AddButton = ({ onClick, html }: { onClick: any; html: string }) => {
   return (
     <button
       onClick={onClick}
-      className="mr-2 rounded bg-primary-500 px-3 py-2 text-sm text-white hover:bg-primary-600"
-    >
-      <svg
-        aria-hidden={true}
-        className={buttonIconClasses}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-      >
-        <path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"></path>
-      </svg>
-      {title}
-    </button>
+      className="rounded bg-primary-500 px-3 py-2 text-start text-sm text-white hover:bg-primary-600"
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
   );
 };
 
@@ -272,47 +263,61 @@ const App: React.FC = () => {
 
         <div className="mb-6">
           <h2 className="mb-2 text-xl font-semibold text-primary-900">Content</h2>
-          <AddButton
-            title={"HTML / Text"}
-            onClick={() =>
-              addFunction(setBodyFunctions, {
-                type: "raw",
-                html: "",
-              })
-            }
-          />
-          <AddButton
-            title={"Image"}
-            onClick={() =>
-              addFunction(setBodyFunctions, {
-                type: "img",
-                src: "",
-                alt: "",
-                width: "",
-                height: "",
-              })
-            }
-          />
-          <AddButton
-            title={"Primary Button"}
-            onClick={() =>
-              addFunction(setBodyFunctions, {
-                type: "primaryButton",
-                label: "",
-                href: "",
-              })
-            }
-          />
-          <AddButton
-            title="Secondary Button"
-            onClick={() =>
-              addFunction(setBodyFunctions, {
-                type: "secondaryButton",
-                label: "",
-                href: "",
-              })
-            }
-          />
+          <div className="grid grid-cols-2 gap-1">
+            <AddButton
+              html={
+                `<svg aria-hidden="true" class="${buttonIconClasses}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" d="M8.5 5v6h2a.5.5 0 1 1 0 1h-5a.5.5 0 1 1 0-1h2V5H5v.5a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.51l-.021 1a.5.5 0 1 1-1-.02l.01-.49zM1 15h1.5a.5.5 0 1 1 0 1h-2a.5.5 0 0 1-.5-.5v-1.996a.5.5 0 0 1 1 0zM1 1v1.497a.5.5 0 1 1-1 0V.5A.5.5 0 0 1 .5 0h2a.5.5 0 0 1 0 1zm14 0h-1.495a.5.5 0 0 1 0-1H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 1 1-1 0zm0 14v-1.5a.5.5 0 1 1 1 0v2a.5.5 0 0 1-.5.5h-2a.5.5 0 1 1 0-1zM0 6.5a.5.5 0 0 1 1 0v3a.5.5 0 0 1-1 0zM9.5 0a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1zM15 6.5a.5.5 0 1 1 1 0v3a.5.5 0 1 1-1 0zM9.5 15a.5.5 0 1 1 0 1h-3a.5.5 0 1 1 0-1z"/></svg>` +
+                "Text / HTML"
+              }
+              onClick={() =>
+                addFunction(setBodyFunctions, {
+                  type: "raw",
+                  html: "",
+                })
+              }
+            />
+            <AddButton
+              html={
+                `<svg aria-hidden="true" class="${buttonIconClasses}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="currentColor" d="M2 5v22h28V5zm2 2h24v13.906l-5.281-5.312l-.719-.719l-4.531 4.531l-5.75-5.812l-.719-.719l-7 7zm20 2a1.999 1.999 0 1 0 0 4a1.999 1.999 0 1 0 0-4m-13 6.719L20.188 25H4v-2.281zm11 2l6 6V25h-4.969l-4.156-4.188z"/></svg>` +
+                "Image"
+              }
+              onClick={() =>
+                addFunction(setBodyFunctions, {
+                  type: "img",
+                  src: "",
+                  alt: "",
+                  width: "",
+                  height: "",
+                })
+              }
+            />
+            <AddButton
+              html={
+                `<svg aria-hidden="true" class="${buttonIconClasses}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3 17V7h18v10zm4.558-2.5h.884v-2.058H10.5v-.884H8.442V9.5h-.884v2.058H5.5v.884h2.058z"/></svg>` +
+                "Primary Button"
+              }
+              onClick={() =>
+                addFunction(setBodyFunctions, {
+                  type: "primaryButton",
+                  label: "",
+                  href: "",
+                })
+              }
+            />
+            <AddButton
+              html={
+                `<svg aria-hidden="true" class="${buttonIconClasses}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3 17V7h18v10zm1-1h16V8H4zm3.558-1.5h.884v-2.058H10.5v-.884H8.442V9.5h-.884v2.058H5.5v.884h2.058zM4 16V8z"/></svg>` +
+                "Secondary Button"
+              }
+              onClick={() =>
+                addFunction(setBodyFunctions, {
+                  type: "secondaryButton",
+                  label: "",
+                  href: "",
+                })
+              }
+            />
+          </div>
           <DndProvider backend={HTML5Backend}>
             <div className="my-2 min-h-60 space-y-2 rounded border border-dashed border-primary-500 bg-white p-4">
               {bodyFunctions.map((func, index) => (
@@ -349,7 +354,7 @@ const App: React.FC = () => {
           <div className="mb-4">
             <h3 className="mb-2 font-semibold text-primary-800">Top Row</h3>
             <AddButton
-              title={"Raw HTML"}
+              html={"Raw HTML"}
               onClick={() =>
                 addFunction(setFooterTopRowFunctions, {
                   type: "raw",
@@ -358,7 +363,7 @@ const App: React.FC = () => {
               }
             />
             <AddButton
-              title={"Primary Button"}
+              html={"Primary Button"}
               onClick={() =>
                 addFunction(setFooterTopRowFunctions, {
                   type: "primaryButton",
@@ -371,7 +376,7 @@ const App: React.FC = () => {
           <div className="mb-4">
             <h3 className="mb-2 font-semibold text-primary-800">Bottom Row</h3>
             <AddButton
-              title={"Raw HTML"}
+              html={"Raw HTML"}
               onClick={() =>
                 addFunction(setFooterBottomRowFunctions, {
                   type: "raw",
@@ -380,7 +385,7 @@ const App: React.FC = () => {
               }
             />
             <AddButton
-              title={"Primary Button"}
+              html={"Primary Button"}
               onClick={() =>
                 addFunction(setFooterBottomRowFunctions, {
                   type: "primaryButton",
