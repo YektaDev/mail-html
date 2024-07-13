@@ -226,14 +226,14 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row">
+    <main className="flex flex-col lg:flex-row">
       <div className="z-10 flex flex-col bg-primary-50 p-6 shadow shadow-primary-300 lg:max-h-screen lg:min-h-screen lg:overflow-y-auto">
         <header className="mb-4 flex items-center text-primary-900">
           <Logo className="me-4 inline size-16" />
           <div className="flex flex-col font-bold">
             <h1 className="text-2xl">Mail HTML</h1>
             <span className="text-xs opacity-50">
-              Make a Professional Responsive Email in Seconds!
+              Make Professional Responsive Emails in Seconds!
             </span>
           </div>
         </header>
@@ -452,7 +452,7 @@ const App: React.FC = () => {
           setViewCode={setViewCode}
         />
       </div>
-    </div>
+    </main>
   );
 };
 
