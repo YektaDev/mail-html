@@ -3,15 +3,15 @@ import { fieldStyle } from "../styles.ts";
 
 const Button = ({ label, href, inNewTab, onLabelChange, onHrefChange, onInNewTabChange }) => {
   return (
-    <div className="flex w-full items-center gap-2 text-xs">
+    <div className="flex w-full flex-col items-center gap-2 text-xs sm:flex-row">
       <input
-        className={"flex-2 px-2 py-1 " + fieldStyle}
+        className={"flex-2 w-full px-2 py-1 sm:w-fit " + fieldStyle}
         value={label}
         onChange={e => onLabelChange(e.target.value)}
         placeholder="Label"
       />
       <input
-        className={"flex-1 px-2 py-1 " + fieldStyle}
+        className={"w-full flex-1 px-2 py-1 sm:w-fit " + fieldStyle}
         value={href}
         onChange={e => onHrefChange(e.target.value)}
         placeholder="URL"

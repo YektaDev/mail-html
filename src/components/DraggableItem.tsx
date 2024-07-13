@@ -35,7 +35,7 @@ const DraggableItem = ({ item, index, moveItem, deleteItem, updateItem }) => {
     >
       <button title="Delete Item" aria-label="Delete Item" onClick={() => deleteItem(index)}>
         <svg
-          className="-mt-0.5 me-4 inline size-4 text-primary-400 hover:text-primary-600"
+          className="xs:me-4 -mt-0.5 me-2 inline size-4 text-primary-400 hover:text-primary-600"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
         >
