@@ -227,7 +227,7 @@ const App: React.FC = () => {
 
   return (
     <main className="flex flex-col lg:flex-row">
-      <div className="z-10 flex flex-col bg-primary-50 p-6 shadow shadow-primary-300 lg:max-h-screen lg:min-h-screen lg:overflow-y-auto">
+      <div className="z-10 flex flex-col bg-primary-50 p-6 shadow shadow-primary-300 lg:max-h-screen lg:min-h-screen lg:max-w-lg lg:overflow-y-auto">
         <header className="mb-4 flex items-center text-primary-900">
           <Logo className="me-4 inline size-16" />
           <div className="flex flex-col font-bold">
@@ -240,7 +240,7 @@ const App: React.FC = () => {
 
         <div className="mb-4">
           <label className="mb-2 block text-sm font-medium text-primary-700">
-            Title:
+            <strong>Title:</strong>
             <span className={"relative -top-1 ms-2 text-xs opacity-50"}>(Invisible)</span>
             <input
               type="text"
@@ -254,13 +254,19 @@ const App: React.FC = () => {
 
         <div className="mb-4">
           <label className="mb-2 block text-sm font-medium text-primary-700">
-            Hidden Preview Prefix:
+            <strong>Description Preview:</strong>
+            <span className={"relative -top-1 ms-2 text-xs opacity-50"}>(Invisible)</span>
             <input
               type="text"
               value={hiddenPreviewPrefix}
               onChange={e => setHiddenPreviewPrefix(e.target.value)}
               className={"mt-1 w-full p-2 " + fieldStyle}
             />
+            <p className="mt-3 text-xs opacity-50">
+              In many mail clients, the first few words of the email are shown as a preview. You can
+              use this field to add a hidden prefix to the email content to make the preview more
+              appealing.
+            </p>
           </label>
         </div>
 
@@ -322,16 +328,19 @@ const App: React.FC = () => {
             </div>
           </DndProvider>
           <label className="mt-6 block text-sm font-medium text-primary-700">
-            Receive Reason:
+            <strong>Footnote:</strong>
             <input
               type="text"
               value={receiveReason}
-              placeholder={
-                "E.g., You received this email because you requested to sign up for our service. If you did not make this request, you can safely ignore this email. No account will be created without verification."
-              }
+              placeholder={"[Suggestion]: Mention the reason for receiving the email."}
               onChange={e => setReceiveReason(e.target.value)}
               className={"mt-1 w-full p-2 " + fieldStyle}
             />
+            <p className="mt-3 text-xs opacity-50">
+              E.g., You received this email because you requested to sign up for our service. If you
+              did not make this request, you can safely ignore this email. No account will be
+              created without verification.
+            </p>
           </label>
         </div>
 
@@ -385,7 +394,7 @@ const App: React.FC = () => {
 
         <div className="mb-4">
           <label className="mb-2 block text-sm font-medium text-primary-700">
-            Extra CSS Style:{" "}
+            <strong>Extra CSS Style:</strong>
             <span className={"relative -top-1 ms-2 text-xs opacity-50"}>(Advanced - Optional)</span>
             <AceEditor
               name="extraStyle"
