@@ -438,7 +438,7 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        <div className="mb-4">
+        <div className="mb-6">
           <label className="mb-2 block text-sm font-medium text-primary-700">
             <strong>Extra CSS Style:</strong>
             <span className={"relative -top-1 ms-2 text-xs opacity-50"}>(Advanced - Optional)</span>
@@ -459,8 +459,16 @@ const App: React.FC = () => {
             />
           </label>
         </div>
-
-        <div className="mb-6 mt-10 flex justify-between">
+        <div className="flex justify-between gap-4">
+          <a
+            className="self-end text-primary-800 hover:text-primary-600"
+            href="https://github.com/YektaDev/mail-html"
+            target="_blank"
+            title="GitHub Repository"
+          >
+            <GitHubIcon className="inline h-10" aria-hidden={true}></GitHubIcon>
+          </a>
+          <div aria-hidden={true} className="flex-1"></div>
           <ClearButton
             onConfirm={() => {
               setTitle("");
@@ -474,17 +482,6 @@ const App: React.FC = () => {
             }}
           />
           <ViewSwitchButton viewCode={viewCode} setViewCode={setViewCode} />
-        </div>
-        <div aria-hidden={true} className="flex-1"></div>
-        <div className="text-primary-800">
-          <a
-            className="hover:text-primary-600"
-            href="https://github.com/YektaDev/mail-html"
-            target="_blank"
-            title="GitHub Repository"
-          >
-            <GitHubIcon className="inline h-10" aria-hidden={true}></GitHubIcon>
-          </a>
         </div>
       </div>
       <div
