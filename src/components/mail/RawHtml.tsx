@@ -3,6 +3,7 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/theme-one_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
+import fieldStyle from "../fieldStyle.ts";
 
 const RawHtml = ({ html, onChange }) => {
   return (
@@ -17,7 +18,7 @@ const RawHtml = ({ html, onChange }) => {
       onChange={e => onChange(e)}
       wrapEnabled={true}
       editorProps={{ $blockScrolling: true }}
-      className="h-fit max-h-fit rounded border border-primary-300"
+      className={"h-fit max-h-fit " + fieldStyle}
       placeholder="HTML / Text"
     />
   );

@@ -3,6 +3,7 @@ import { useDrag, useDrop } from "react-dnd";
 import RawHtml from "./mail/RawHtml";
 import Button from "./mail/Button.tsx";
 import Img from "./mail/Img";
+import fieldStyle from "./fieldStyle.ts";
 
 const ItemType = "ITEM";
 
@@ -29,7 +30,7 @@ const DraggableItem = ({ item, index, moveItem, deleteItem, updateItem }) => {
   return (
     <div
       ref={node => ref(drop(node))}
-      className="flex rounded border border-primary-300 bg-primary-100 p-2"
+      className={"flex bg-primary-100 p-2 shadow-md " + fieldStyle}
       style={{ transform: "translate3d(0, 0, 0)" }}
     >
       <button title="Delete Item" aria-label="Delete Item" onClick={() => deleteItem(index)}>

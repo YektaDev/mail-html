@@ -1,4 +1,5 @@
 import React from "react";
+import fieldStyle from "../fieldStyle.ts";
 
 const Img = ({
   src,
@@ -10,10 +11,10 @@ const Img = ({
   onWidthChange,
   onHeightChange,
 }) => {
-  const fieldClass = "mt-1 w-full rounded border border-primary-300 py-1 px-1.5";
+  const fieldClass = "mt-1 grow py-1 px-1.5 " + fieldStyle;
   const sizeFieldClass = fieldClass + " w-[3.1rem]";
   return (
-    <div className="flex w-full space-x-2 text-xs">
+    <div className="flex w-full space-x-2">
       <input
         value={src}
         onChange={e => onSrcChange(e.target.value)}
@@ -35,7 +36,7 @@ const Img = ({
           className={sizeFieldClass}
         />
         <span
-          className="-mb-1.5 select-none items-center text-center font-light text-primary-700"
+          className="-mb-1.5 select-none items-center px-0.5 text-center font-light text-primary-600"
           aria-hidden={true}
           dangerouslySetInnerHTML={{ __html: "&times;" }}
         />

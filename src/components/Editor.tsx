@@ -11,6 +11,7 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/theme-one_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
+import fieldStyle from "./fieldStyle.ts";
 
 const { emailHtml } = yekaEmailHtmlLib.dev.yekta.yeka.email.html;
 
@@ -247,7 +248,7 @@ const App: React.FC = () => {
               value={title}
               placeholder={"[Suggestion]: The same as the title of the email."}
               onChange={e => setTitle(e.target.value)}
-              className="mt-1 w-full rounded border border-primary-300 p-2"
+              className={"mt-1 w-full p-2 " + fieldStyle}
             />
           </label>
         </div>
@@ -259,7 +260,7 @@ const App: React.FC = () => {
               type="text"
               value={hiddenPreviewPrefix}
               onChange={e => setHiddenPreviewPrefix(e.target.value)}
-              className="mt-1 w-full rounded border border-primary-300 p-2"
+              className={"mt-1 w-full p-2 " + fieldStyle}
             />
           </label>
         </div>
@@ -330,7 +331,7 @@ const App: React.FC = () => {
                 "E.g., You received this email because you requested to sign up for our service. If you did not make this request, you can safely ignore this email. No account will be created without verification."
               }
               onChange={e => setReceiveReason(e.target.value)}
-              className="mt-1 w-full rounded border border-primary-300 p-2"
+              className={"mt-1 w-full p-2 " + fieldStyle}
             />
           </label>
         </div>
@@ -398,7 +399,7 @@ const App: React.FC = () => {
               value={extraStyle}
               onChange={e => setExtraStyle(e)}
               editorProps={{ $blockScrolling: true }}
-              className="mt-1 rounded border border-primary-300"
+              className={"mt-1 " + fieldStyle}
               placeholder={
                 "Example:\nhr, .content > table { background: #cfe; border-color: #8ba; }"
               }
