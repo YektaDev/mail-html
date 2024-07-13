@@ -2,7 +2,7 @@ import React from "react";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/ext-language_tools";
-import fieldStyle from "../fieldStyle.ts";
+import { fieldStyle } from "../styles.ts";
 
 const RawHtml = ({ html, onChange }) => {
   return (

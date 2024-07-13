@@ -1,5 +1,5 @@
 import React from "react";
-import fieldStyle from "../fieldStyle.ts";
+import { fieldStyle } from "../styles.ts";
 
 const Button = ({ label, href, inNewTab, onLabelChange, onHrefChange, onInNewTabChange }) => {
   return (
@@ -16,11 +16,11 @@ const Button = ({ label, href, inNewTab, onLabelChange, onHrefChange, onInNewTab
         onChange={e => onHrefChange(e.target.value)}
         placeholder="URL"
       />
-      <label className="flex items-center space-x-1">
+      <label className="me-1 flex items-center space-x-1.5">
         <input
           type="checkbox"
           className={
-            "h-4 w-4 rounded border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500"
+            "h-4 w-4 rounded border-primary-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-400"
           }
           value={inNewTab}
           onChange={e => onInNewTabChange(e.target.checked)}

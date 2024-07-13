@@ -11,6 +11,7 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/ext-language_tools";
 import fieldStyle from "./fieldStyle.ts";
+import { buttonIconClasses, buttonStyle, fieldStyle, outlineButtonStyle } from "./styles.ts";
 
 const { emailHtml } = yekaEmailHtmlLib.dev.yekta.yeka.email.html;
 
@@ -71,13 +72,11 @@ const Output: React.FC<EmailHtmlGeneratorProps> = ({
   return <iframe id="preview" className="size-full min-h-screen" srcDoc={emailHtmlContent} />;
 };
 
-const buttonIconClasses = "-ms-1 -mt-0.5 me-2 inline size-6";
-
 const ViewSwitchButton = ({ viewCode, setViewCode }: { viewCode: boolean; setViewCode: any }) => {
   return (
     <button
       onClick={() => setViewCode((prevViewCode: boolean) => !prevViewCode)}
-      className="rounded bg-primary-500 px-4 py-2 text-white hover:bg-primary-600"
+      className={"px-4 py-2 " + buttonStyle}
       dangerouslySetInnerHTML={
         viewCode
           ? {
@@ -117,7 +116,7 @@ const ClearButton = ({ onConfirm }: { onConfirm: any }) => {
           setConfirm(true);
         }
       }}
-      className="rounded bg-primary-100 px-4 py-2 text-primary-500 outline outline-primary-500 hover:bg-primary-200 hover:text-primary-700 hover:outline-primary-700"
+      className={outlineButtonStyle}
       dangerouslySetInnerHTML={
         confirm
           ? {
@@ -137,7 +136,7 @@ const AddButton = ({ onClick, html }: { onClick: any; html: string }) => {
   return (
     <button
       onClick={onClick}
-      className="rounded bg-primary-500 px-3 py-2 text-start text-sm text-white hover:bg-primary-600"
+      className={"px-4 py-2 text-start text-sm " + buttonStyle}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

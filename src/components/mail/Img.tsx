@@ -1,5 +1,5 @@
 import React from "react";
-import fieldStyle from "../fieldStyle.ts";
+import { fieldStyle } from "../styles.ts";
 
 const Img = ({
   src,

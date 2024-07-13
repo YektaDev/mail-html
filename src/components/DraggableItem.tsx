@@ -3,7 +3,7 @@ import { useDrag, useDrop } from "react-dnd";
 import RawHtml from "./mail/RawHtml";
 import Button from "./mail/Button.tsx";
 import Img from "./mail/Img";
-import fieldStyle from "./fieldStyle.ts";
+import { fieldStyle } from "./styles.ts";
 
 const ItemType = "ITEM";
 
