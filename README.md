@@ -2,7 +2,13 @@
 <h1 align="center">Mail HTML</h1>
 <p align="center"><strong>Make Professional Responsive Emails in Seconds!</strong></p>
 <p align="center"><a href="https://mailhtml.yekta.dev" target="_blank">mailhtml.yekta.dev</a></p>
-<br>
+
+**[Mail HTML](https://mailhtml.yekta.dev)** is a free online tool that allows you to craft clean and standard emails
+in the shortest time possible. It is 100% free and requires no sign up. Mail HTML is a great tool for creating
+professional emails for your business or personal use. You can create emails with a live preview and get the minified
+HTML output.
+
+### **Key Features:**
 
 + 100% Local Processing
 + 100% Free, No Sign Up Required
@@ -12,11 +18,11 @@
 + Live Preview
 + Minified HTML Output
 + Simple and Clean Design
-+ Open Source
++ Open Source (Apache License 2.0)
 
-**[Mail HTML](https://mailhtml.yekta.dev)** is a free online tool that allows you to create professional responsive
-emails in seconds. It is 100% free and requires no sign up. It is a great tool for creating professional emails for your
-business or personal use. You can create emails with a live preview and get the minified HTML output. It is a great tool
-for creating professional emails in seconds.
+This project is essentially a UI wrapper for the
+**[Yeka Email HTML](https://github.com/YektaDev/Yeka/tree/master/yeka-email-html)** library, written in
+[Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) and transpiled to JavaScript for use within the
+project.
 
 ![Rubberducklessly!](https://yekta.dev/rubberducklessly.svg)
