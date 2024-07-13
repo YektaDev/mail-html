@@ -1,7 +1,6 @@
 import React from "react";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-html";
-import "ace-builds/src-noconflict/theme-one_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 import fieldStyle from "../fieldStyle.ts";
 
@@ -9,7 +8,6 @@ const RawHtml = ({ html, onChange }) => {
   return (
     <AceEditor
       mode="html"
-      theme="one_dark"
       width="100%"
       enableBasicAutocompletion={true}
       minLines={3}
