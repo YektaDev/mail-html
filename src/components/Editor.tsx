@@ -10,8 +10,8 @@ import DraggableItem from "./DraggableItem";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/ext-language_tools";
-import fieldStyle from "./fieldStyle.ts";
 import { buttonIconClasses, buttonStyle, fieldStyle, outlineButtonStyle } from "./styles.ts";
+import ButtonGroup from "./ButtonGroup.tsx";
 
 const { emailHtml } = yekaEmailHtmlLib.dev.yekta.yeka.email.html;
 
@@ -350,49 +350,13 @@ const App: React.FC = () => {
 
         <div className="mb-6">
           <h2 className="mb-2 text-xl font-semibold text-primary-900">Footer</h2>
-          <div className="mb-4">
-            <h3 className="mb-2 font-semibold text-primary-800">Top Row</h3>
-            <AddButton
-              html={"Raw HTML"}
-              onClick={() =>
-                addFunction(setFooterTopRowFunctions, {
-                  type: "raw",
-                  html: "<div>Top Row Content</div>",
-                })
-              }
-            />
-            <AddButton
-              html={"Primary Button"}
-              onClick={() =>
-                addFunction(setFooterTopRowFunctions, {
-                  type: "primaryButton",
-                  label: "Click Me",
-                  href: "https://example.com",
-                })
-              }
-            />
+          <div className="mb-4 flex items-center">
+            <h3 className="me-4 font-semibold text-primary-800">Top Row</h3>
+            <ButtonGroup />
           </div>
-          <div className="mb-4">
-            <h3 className="mb-2 font-semibold text-primary-800">Bottom Row</h3>
-            <AddButton
-              html={"Raw HTML"}
-              onClick={() =>
-                addFunction(setFooterBottomRowFunctions, {
-                  type: "raw",
-                  html: "<div>Top Row Content</div>",
-                })
-              }
-            />
-            <AddButton
-              html={"Primary Button"}
-              onClick={() =>
-                addFunction(setFooterBottomRowFunctions, {
-                  type: "primaryButton",
-                  label: "Click Me",
-                  href: "https://example.com",
-                })
-              }
-            />
+          <div className="mb-4 flex items-center">
+            <h3 className="me-4 font-semibold text-primary-800">Bottom Row</h3>
+            <ButtonGroup />
           </div>
         </div>
 
