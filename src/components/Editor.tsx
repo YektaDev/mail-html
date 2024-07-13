@@ -142,6 +142,51 @@ const AddButton = ({ onClick, html }: { onClick: any; html: string }) => {
   );
 };
 
+const activeFooterButton: (rowFunctions: any[]) => string = (rowFunctions: any[]) => {
+  return rowFunctions.length === 0
+    ? "Nothing"
+    : rowFunctions[0].type === "raw"
+      ? "Text / HTML"
+      : rowFunctions[0].type === "img"
+        ? "Image"
+        : (() => {
+            console.error("Unknown top row item type");
+            return "Nothing";
+          })();
+};
+
+const handleFooterButton: (button: string, setFooterRowFunctions: (x: any[]) => void) => void = (
+  button: string,
+  setFooterRowFunctions: (x: any[]) => void,
+) => {
+  switch (button) {
+    case "Nothing":
+      setFooterRowFunctions([]);
+      break;
+    case "Text / HTML":
+      setFooterRowFunctions([
+        {
+          type: "raw",
+          html: "",
+        },
+      ]);
+      break;
+    case "Image":
+      setFooterRowFunctions([
+        {
+          type: "img",
+          src: "",
+          alt: "",
+          width: 100,
+          height: 100,
+        },
+      ]);
+      break;
+    default:
+      console.error("Unsupported button type:", button);
+  }
+};
+
 const App: React.FC = () => {
   const [viewCode, setViewCode] = useState(false);
   useEffect(() => {
@@ -352,11 +397,23 @@ const App: React.FC = () => {
           <h2 className="mb-2 text-xl font-semibold text-primary-900">Footer</h2>
           <div className="mb-4 flex items-center">
             <h3 className="me-4 font-semibold text-primary-800">Top Row</h3>
-            <ButtonGroup />
+            <ButtonGroup
+              buttons={["Nothing", "Text / HTML", "Image"]}
+              activeButton={activeFooterButton(footerTopRowFunctions)}
+              handleButtonClick={(button: string) => {
+                handleFooterButton(button, setFooterTopRowFunctions);
+              }}
+            />
           </div>
           <div className="mb-4 flex items-center">
             <h3 className="me-4 font-semibold text-primary-800">Bottom Row</h3>
-            <ButtonGroup />
+            <ButtonGroup
+              buttons={["Nothing", "Text / HTML", "Image"]}
+              activeButton={activeFooterButton(footerBottomRowFunctions)}
+              handleButtonClick={(button: string) => {
+                handleFooterButton(button, setFooterBottomRowFunctions);
+              }}
+            />
           </div>
         </div>
 

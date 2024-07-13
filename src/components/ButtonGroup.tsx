@@ -1,35 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { buttonStyle, outlineButtonStyle } from "./styles.ts";
 
-const activeStyle = "px-4 py-2 " + buttonStyle;
-const inactiveStyle = "px-4 py-2 " + outlineButtonStyle;
-const ButtonGroup: React.FC = () => {
-  const [activeButton, setActiveButton] = useState("Nothing");
+const activeStyle = `px-4 py-2 ${buttonStyle}`;
+const inactiveStyle = `px-4 py-2 ${outlineButtonStyle}`;
 
-  const handleButtonClick = (buttonName: string) => {
-    setActiveButton(buttonName);
-  };
-
+const ButtonGroup = ({ buttons, activeButton, handleButtonClick }) => {
   return (
-    <div className="flex gap-2 text-xs">
-      <button
-        className={activeButton === "Nothing" ? activeStyle : inactiveStyle}
-        onClick={() => handleButtonClick("Nothing")}
-      >
-        Nothing
-      </button>
-      <button
-        className={activeButton === "Text/HTML" ? activeStyle : inactiveStyle}
-        onClick={() => handleButtonClick("Text/HTML")}
-      >
-        Text / HTML
-      </button>
-      <button
-        className={activeButton === "Image" ? activeStyle : inactiveStyle}
-        onClick={() => handleButtonClick("Image")}
-      >
-        Image
-      </button>
+    <div className="flex gap-2 text-xs" role="radiogroup">
+      {buttons.map((button: string) => (
+        <button
+          key={button}
+          className={button === activeButton ? activeStyle : inactiveStyle}
+          onClick={() => handleButtonClick(button)}
+        >
+          {button}
+        </button>
+      ))}
     </div>
   );
 };
