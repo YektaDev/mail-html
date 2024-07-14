@@ -2,7 +2,7 @@ import React from "react";
 import { fieldStyle } from "../styles.ts";
 
 const commonFieldClass = "py-1 px-1.5 " + fieldStyle;
-const propFieldClass = commonFieldClass + " xs:w-0 flex-1";
+const propFieldClass = commonFieldClass + " sm:w-0 flex-1";
 const sizeFieldClass = commonFieldClass + " w-[3.1rem]";
 const Img = ({
   src,
@@ -15,7 +15,7 @@ const Img = ({
   onHeightChange,
 }) => {
   return (
-    <div className="xs:flex-row flex w-full flex-col gap-2">
+    <div className="flex w-full flex-col items-stretch gap-2 sm:flex-row">
       <input
         value={src}
         onChange={e => onSrcChange(e.target.value)}
@@ -29,7 +29,7 @@ const Img = ({
         className={propFieldClass}
       />
 
-      <div className="flex items-center">
+      <div className="mx-auto flex items-center">
         <input
           value={width}
           onChange={e => onWidthChange(e.target.value)}

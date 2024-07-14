@@ -397,7 +397,7 @@ const App: React.FC = () => {
         <div className="mb-6">
           <h2 className="mb-2 text-xl font-semibold text-primary-900">Footer</h2>
           <div className="xs:flex-row mb-4 flex flex-col items-center">
-            <h3 className="me-4 font-semibold text-primary-800">Top Row</h3>
+            <h3 className="me-4 font-semibold text-primary-800">Top</h3>
             <ButtonGroup
               buttons={["Nothing", "Text / HTML", "Image"]}
               activeButton={activeFooterButton(footerTopRowFunctions)}
@@ -417,7 +417,7 @@ const App: React.FC = () => {
             }
           </div>
           <div className="xs:flex-row mb-4 flex flex-col items-center">
-            <h3 className="me-4 font-semibold text-primary-800">Bottom Row</h3>
+            <h3 className="me-4 font-semibold text-primary-800">Bottom</h3>
             <ButtonGroup
               buttons={["Nothing", "Text / HTML", "Image"]}
               activeButton={activeFooterButton(footerBottomRowFunctions)}
@@ -459,9 +459,9 @@ const App: React.FC = () => {
             />
           </label>
         </div>
-        <div className="flex justify-between gap-4">
+        <div className="xs:flex-row flex flex-col-reverse justify-between gap-4">
           <a
-            className="self-end text-primary-800 hover:text-primary-600"
+            className="xs:mx-0 mx-auto self-end text-primary-800 hover:text-primary-600"
             href="https://github.com/YektaDev/mail-html"
             target="_blank"
             title="GitHub Repository"
