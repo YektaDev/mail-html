@@ -12,7 +12,7 @@
     "format": "prettier --write . --plugin=prettier-plugin-astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.8.0",
+    "@astrojs/check": "^0.8.1",
     "@astrojs/react": "^3.6.0",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/jetbrains-mono": "^5.0.21",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
-    "prettier": "^3.3.2",
+    "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-tailwindcss": "^0.6.5"
   }
