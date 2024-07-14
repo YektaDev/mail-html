@@ -9,12 +9,14 @@ const Button = ({ label, href, inNewTab, onLabelChange, onHrefChange, onInNewTab
         value={label}
         onChange={e => onLabelChange(e.target.value)}
         placeholder="Label"
+        type="text"
       />
       <input
         className={"w-full flex-1 px-2 py-1 sm:w-fit " + fieldStyle}
         value={href}
         onChange={e => onHrefChange(e.target.value)}
         placeholder="URL"
+        type="url"
       />
       <label className="me-1 flex items-center gap-1.5">
         <input

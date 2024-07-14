@@ -21,12 +21,14 @@ const Img = ({
         onChange={e => onSrcChange(e.target.value)}
         placeholder="Image URL"
         className={propFieldClass}
+        type="url"
       />
       <input
         value={alt}
         onChange={e => onAltChange(e.target.value)}
         placeholder="Alt Text"
         className={propFieldClass}
+        type="text"
       />
 
       <div className="mx-auto flex items-center">
