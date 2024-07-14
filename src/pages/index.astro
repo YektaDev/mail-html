@@ -1,8 +1,30 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import "@fontsource-variable/overpass";
+import "@fontsource-variable/jetbrains-mono";
+import Favicons from "../components/Favicons.astro";
 import Email from "../components/Editor";
 ---
 
-<Layout title="Mail HTML | Make Professional Responsive Emails in Seconds!">
-  <Email client:only="react" />
-</Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Mail HTML | Make Professional Responsive Emails in Seconds!</title>
+    <meta
+      name="description"
+      content="A free online tool that allows you to craft clean and standard emails in the shortest time possible. It is 100% free and requires no sign up. It's a great tool for creating professional emails for your business or personal use. You can create emails with a live preview and get the minified HTML output."
+    />
+    <Favicons />
+    <script
+      async
+      defer
+      is:inline
+      data-domain="mailhtml.yekta.dev"
+      src="https://hub.yekta.dev/js/script.js"></script>
+  </head>
+  <body>
+    <Email client:only="react" />
+  </body>
+</html>
